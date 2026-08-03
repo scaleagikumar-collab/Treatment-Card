@@ -1,0 +1,37 @@
+{
+  "name": "Treatment Card",
+  "short_name": "Treatment",
+  "description": "A private home record for parents of a child in treatment. Everything stays on this phone.",
+  "start_url": "./app.html",
+  "scope": "./",
+  "id": "/treatment-card/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#F4F7F6",
+  "theme_color": "#C7382E",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["health", "medical", "lifestyle"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Danger signs",
+      "short_name": "Danger",
+      "description": "The signs that mean go to hospital now",
+      "url": "./app.html#danger",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Medicines",
+      "short_name": "Medicines",
+      "description": "Today's doses",
+      "url": "./app.html#meds",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
