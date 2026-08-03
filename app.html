@@ -1,3 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#C7382E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Treatment Card">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="A private, offline record for parents of a child in treatment.">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/favicon.png">
+<title>Treatment Card</title>
 <style>
 /* Fonts are embedded, not linked. A relative font path 404s in any preview,
    sandbox or iframe that does not serve the fonts folder — and then the whole
@@ -3962,7 +3977,18 @@ function renderAll(){
 safe(applyA11y,"accessibility");
 safe(renderVitalPick,"vital picker"); safe(renderSymPick,"symptom picker");
 safe(buildRemUI,"reminders"); safe(renderSettings,"settings");
-safe(function(){ $("aboutLink").setAttribute("href",ABOUT_URL); },"about link");
+safe(function(){
+  var al=$("aboutLink"); if(!al) return;
+  if(window.parent!==window){
+    /* running inside the landing page: go back to it instead of nesting */
+    al.setAttribute("href","#");
+    al.addEventListener("click",function(e){ e.preventDefault();
+      try{ window.parent.postMessage({tc:"back"},"*"); }catch(_){}}
+    );
+  } else {
+    al.setAttribute("href",ABOUT_URL);
+  }
+},"about link");
 safe(function(){ $("dvDate").value=dstr(Date.now()); },"day picker");
 renderAll();
 safe(showInstallCard,"install prompt"); safe(openFromHash,"deep link");
