@@ -3977,18 +3977,7 @@ function renderAll(){
 safe(applyA11y,"accessibility");
 safe(renderVitalPick,"vital picker"); safe(renderSymPick,"symptom picker");
 safe(buildRemUI,"reminders"); safe(renderSettings,"settings");
-safe(function(){
-  var al=$("aboutLink"); if(!al) return;
-  if(window.parent!==window){
-    /* running inside the landing page: go back to it instead of nesting */
-    al.setAttribute("href","#");
-    al.addEventListener("click",function(e){ e.preventDefault();
-      try{ window.parent.postMessage({tc:"back"},"*"); }catch(_){}}
-    );
-  } else {
-    al.setAttribute("href",ABOUT_URL);
-  }
-},"about link");
+safe(function(){ $("aboutLink").setAttribute("href",ABOUT_URL); },"about link");
 safe(function(){ $("dvDate").value=dstr(Date.now()); },"day picker");
 renderAll();
 safe(showInstallCard,"install prompt"); safe(openFromHash,"deep link");
