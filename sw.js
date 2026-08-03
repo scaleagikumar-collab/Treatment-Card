@@ -6,7 +6,7 @@
    BUMP THE VERSION whenever you deploy a change, or returning users keep the
    old cached copy. That is the one maintenance rule here. */
 
-var VERSION = "tc-2026-07-28-2";
+var VERSION = "tc-2026-07-28-1";
 
 var SHELL = [
   "./",
